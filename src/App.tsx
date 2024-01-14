@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Form from "./components/Form/Form";
+import { FormDefinition } from "./components/Form/IForm";
+
+const definition: FormDefinition = {
+  url: "form_url",
+  fields: [
+    {
+      type: "NumericField",
+      name: "number",
+      label: "Number field",
+      pattern: null,
+      choices: null,
+    },
+    {
+      type: "RegexValidatedField",
+      name: "string",
+      label: "Only lowercase letters and underscores field",
+      pattern: "[a-z_]+",
+      choices: null,
+    },
+    {
+      type: "MultiSelectField",
+      name: "selection",
+      label: "Multiselect field",
+      pattern: null,
+      choices: ["Choice A", "Choice B", "Choice C"],
+    },
+  ],
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Form</h1>
+      <Form definition={definition} />
     </div>
   );
 }
